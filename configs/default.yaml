@@ -1,0 +1,10 @@
+project:
+  name: "mli_lab"
+
+seed: 42
+
+data:
+  root: "data"
+  ravdess: "data/RAVDESS/Audio_Speech_Actors_01-24"
+  crema_d: "data/CREMA-D/AudioWAV"
+  emodb: "data/EMODB/wav"
