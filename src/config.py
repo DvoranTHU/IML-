@@ -7,7 +7,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG_PATH = PROJECT_ROOT / "configs" / "default.yaml"
 
 # 加载配置
-def load_config(path):
+def load_config(path=None):
     if path is not None:
         config_path = Path(path)
     else:
