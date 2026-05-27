@@ -14,7 +14,6 @@ def main():
     cfg = load_config()
     meta_dir = resolve_path(cfg["outputs"]["metadata"])
     meta_path = meta_dir / "dataset.csv"
-    meta_dir.mkdir(parents=True, exist_ok=True)
 
     issues_df = run_validation(meta_path, cfg=cfg, project_root=PROJECT_ROOT)
     issues_path = meta_dir / "audio_issues.csv"

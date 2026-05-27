@@ -26,7 +26,6 @@ def main():
     # 加载配置
     cfg = load_config()
     out_dir = resolve_path(cfg["outputs"]["metadata"])
-    out_dir.mkdir(parents=True, exist_ok=True)
 
     # 构建三个数据集元数据
     ravdess = build_ravdess_metadata(resolve_path(cfg["data"]["ravdess"]), PROJECT_ROOT)
