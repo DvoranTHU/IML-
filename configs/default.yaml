@@ -24,8 +24,19 @@ features:
   f0_fmax_hz: 400 # 基频最高频率
 
 audio:
-  sample_rate: 16000
-  mono: true
-  normalize: peak
-  peak: 0.99
-  min_duration_sec: 0.1
+  sample_rate: 16000 # 采样率
+  mono: true # 单声道
+  normalize: peak # 峰值归一化
+  peak: 0.99 # 峰值
+  min_duration_sec: 0.1 # 最小持续时间
+
+eval:
+  ravdess_n_folds: 5 # 5折交叉验证
+  cross_corpus_classes: # 通用情感标签
+    - angry
+    - happy
+    - sad
+    - neutral
+    - fearful
+  bootstrap_n: 1000 # 自助法重复次数
+  ci_level: 0.95 # 置信区间水平
