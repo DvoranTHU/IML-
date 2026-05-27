@@ -11,6 +11,17 @@ data:
 
 outputs:
   metadata: "outputs/metadata"
+  features: "outputs/features"
+
+features:
+  frame_length_ms: 25 # 窗长度
+  hop_length_ms: 10 # 步长
+  n_mfcc: 13 # mfcc维度
+  include_delta: true # 包含一阶差分
+  include_delta_delta: true # 包含二阶差分
+  n_functionals: 8 # 8种统计量
+  f0_fmin_hz: 80 # 基频最低频率
+  f0_fmax_hz: 400 # 基频最高频率
 
 audio:
   sample_rate: 16000
