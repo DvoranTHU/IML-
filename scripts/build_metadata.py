@@ -34,10 +34,10 @@ def main():
     emodb = build_emodb_metadata(resolve_path(cfg["data"]["emodb"]), PROJECT_ROOT)
 
     all_df = pd.concat([ravdess, crema_d, emodb], ignore_index=True)
-    out_path = out_dir / "all.csv"
+    out_path = out_dir / "dataset.csv"
     all_df.to_csv(out_path, index=False)
 
-    debug_path = out_dir / "debug.txt"
+    debug_path = out_dir / "dataset_debug.txt"
     with debug_path.open("w", encoding="utf-8") as f:
         summarize("RAVDESS", ravdess, f)
         summarize("CREMA-D", crema_d, f)

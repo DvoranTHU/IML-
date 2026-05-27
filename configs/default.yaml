@@ -11,3 +11,10 @@ data:
 
 outputs:
   metadata: "outputs/metadata"
+
+audio:
+  sample_rate: 16000
+  mono: true
+  normalize: peak
+  peak: 0.99
+  min_duration_sec: 0.1
