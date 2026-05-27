@@ -8,3 +8,6 @@ data:
   ravdess: "data/RAVDESS/Audio_Speech_Actors_01-24"
   crema_d: "data/CREMA-D/AudioWAV"
   emodb: "data/EMODB/wav"
+
+outputs:
+  metadata: "outputs/metadata"
