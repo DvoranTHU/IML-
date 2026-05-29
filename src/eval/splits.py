@@ -107,7 +107,7 @@ def ravdess_speaker_folds(meta, cfg=None):
 class CrossCorpusSplit:
     classes: list[str]
     train: Split
-    test_crema: Split
+    test_crema_d: Split
     test_emodb: Split
 
 # 仅保留已在特征缓存中的样本
@@ -146,7 +146,7 @@ def cross_corpus_split(meta, cfg=None):
         test_idx=np.array([], dtype=int),
         meta=meta(rav_f),
     )
-    test_crema = Split(
+    test_crema_d = Split(
         name="cross_corpus_crema_d_test",
         protocol="cross_corpus_test",
         fold=0,
@@ -163,4 +163,4 @@ def cross_corpus_split(meta, cfg=None):
         meta=meta(emo_f),
     )
 
-    return CrossCorpusSplit(classes=classes, train=train_ravdess, test_crema_d=test_crema, test_emodb=test_emodb)
+    return CrossCorpusSplit(classes=classes, train=train_ravdess, test_crema_d=test_crema_d, test_emodb=test_emodb)
