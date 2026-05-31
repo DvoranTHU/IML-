@@ -12,6 +12,8 @@ data:
 outputs:
   metadata: "outputs/metadata"
   features: "outputs/features"
+  metrics: "outputs/metrics"
+  models: "outputs/models"
 
 features:
   frame_length_ms: 25 # 窗长度
@@ -40,3 +42,12 @@ eval:
     - fearful
   bootstrap_n: 1000 # 自助法重复次数
   ci_level: 0.95 # 置信区间水平
+
+models:
+  gmm:
+    n_components: [8, 16, 32, 64] # 高斯混合模型成分数
+    covariance_type: diag # 协方差类型
+    max_iter: 200 # 最大迭代次数
+    tol: 0.0001 # 收敛阈值
+    reg_covar: 0.000001 # 正则化协方差
+    val_actor_ratio: 0.2 # 验证集演员比例
