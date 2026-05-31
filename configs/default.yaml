@@ -51,3 +51,12 @@ models:
     tol: 0.0001 # 收敛阈值
     reg_covar: 0.000001 # 正则化协方差
     val_actor_ratio: 0.2 # 验证集演员比例
+  svm:
+    kernels: [linear, rbf, poly] # 核函数
+    C: [0.1, 1, 10, 100] # 惩罚系数
+    gamma: [scale, auto, 0.01, 0.1] # 核函数参数
+    degree: [2, 3] # 多项式核函数阶数
+    use_kpca: false # 是否使用核主成分分析
+    kpca_n_components: 100 # 核主成分分析成分数
+    grid_cv_folds: 3 # 网格搜索交叉验证折数
+    n_jobs: -1 # 并行计算线程数
