@@ -112,7 +112,7 @@ def main() -> None:
     runner = EvalRunner(cfg)
     results = []
     for sp in splits:
-        fit_predict._train_idx = sp.train_id
+        fit_predict._train_idx = sp.train_idx
         fit_predict._fold = sp.fold
         res = runner.evaluate_split(X, y, sp, fit_predict)
         results.append(res)
