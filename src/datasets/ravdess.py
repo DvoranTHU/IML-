@@ -17,7 +17,6 @@ Filename example: 02-01-06-01-02-01-12.mp4
 Video-only (02) Speech (01) Fearful (06) Normal intensity (01) Statement "dogs" (02) 1st Repetition (01) 12th Actor (12) Female, as the actor ID number is even.
 """
 
-from pathlib import Path
 import pandas as pd
 
 EMOTION_MAP = {

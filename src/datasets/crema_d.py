@@ -31,7 +31,6 @@ High (HI)
 Unspecified (XX)
 """
 
-from pathlib import Path
 import pandas as pd
 
 EMOTION_MAP = {

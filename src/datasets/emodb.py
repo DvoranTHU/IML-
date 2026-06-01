@@ -16,7 +16,6 @@ S	sadness	T	Trauer
 N = neutral version
 """
 
-from pathlib import Path
 import pandas as pd
 
 EMOTION_MAP = {
