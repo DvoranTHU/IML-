@@ -6,7 +6,7 @@ import numpy as np
 
 from src.config import load_config, resolve_path
 from src.eval.metrics import compute_metrics, timing_summary
-from src.eval.utils import bootstrap_ci, fold_mean_std, paired_ttest
+from src.eval.utils import bootstrap_ci, fold_mean_std
 from src.eval.splits import (
     CrossCorpusSplit,
     Split,
@@ -95,14 +95,6 @@ class EvalRunner:
             for r in fold_results
         ]
         return summary
-
-    # 比较两个模型
-    def compare_models(self, scores_a, scores_b, label_a="model_a", label_b="model_b"):
-        return {
-            label_a: fold_mean_std(scores_a),
-            label_b: fold_mean_std(scores_b),
-            "paired_ttest": paired_ttest(scores_a, scores_b),
-        }
 
     # 保存汇总结果
     def save_summary(self, summary, path):
