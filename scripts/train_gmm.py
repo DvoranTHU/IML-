@@ -131,7 +131,7 @@ def main() -> None:
     out = {
         "model": "gmm_map",
         "dataset": "ravdess",
-        "protocol": "ravdess_loso_5fold",
+        "protocol": "ravdess_5fold",
         "n_components_candidates": k_list,
         "summary": summary,
         "folds": fold_details,

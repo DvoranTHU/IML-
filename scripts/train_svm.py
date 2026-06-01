@@ -77,7 +77,7 @@ def main():
     out = {
         "model": "kernel_svm",
         "dataset": "ravdess",
-        "protocol": "ravdess_loso_5fold",
+        "protocol": "ravdess_5fold",
         "kernels": by_kernel,
         "best_kernel": best_kernel,
         "best_summary": by_kernel[best_kernel]["summary"],

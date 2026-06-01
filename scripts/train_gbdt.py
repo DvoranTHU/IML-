@@ -125,7 +125,7 @@ def main():
     out = {
         "model": "lightgbm_gbdt",
         "dataset": "ravdess",
-        "protocol": "ravdess_loso_5fold",
+        "protocol": "ravdess_5fold",
         "params": run_params,
         "feature_dim": int(X.shape[1]),
         "summary": summary,

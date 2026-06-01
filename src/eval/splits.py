@@ -88,7 +88,7 @@ def ravdess_speaker_folds(meta, cfg=None):
         splits.append(
             Split(
                 name=f"ravdess_fold_{fold}",
-                protocol="ravdess_loso",
+                protocol="ravdess_5fold",
                 fold=fold,
                 train_idx=indices[train_pos],
                 test_idx=indices[test_pos],
