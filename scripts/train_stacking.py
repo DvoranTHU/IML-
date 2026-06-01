@@ -130,7 +130,7 @@ def main():
     sc = stacking_cfg(cfg)
     svm_kernel = str(sc.get("svm_kernel", "rbf"))
 
-    X, y, splits = ravdess_cv_arrays(cfg)
+    X_feat, y, splits = ravdess_cv_arrays(cfg)
     bundle = load_feature_bundle("ravdess", cfg)
     actors = bundle["actor_id"]
     class_order = sorted(set(y), key=str)
@@ -146,15 +146,17 @@ def main():
         tr, te = sp.train_idx, sp.test_idx
         seed = int(cfg.get("seed", 42)) + int(sp.fold)
 
-        gmm_cls, gmm_p, gmm_k = gmm_predict_proba(X[tr], y[tr], X[te], actors[tr], cfg, seed)
+        gmm_cls, gmm_p, gmm_k = gmm_predict_proba(
+            X_feat[tr], y[tr], X_feat[te], actors[tr], cfg, seed
+        )
         gmm[te] = align_proba(gmm_cls, gmm_p, class_order)
 
         svm_cls, svm_p, svm_bp = svm_predict_proba(
-            X[tr], y[tr], X[te], cfg, svm_kernel
+            X_feat[tr], y[tr], X_feat[te], cfg, svm_kernel
         )
         svm[te] = align_proba(svm_cls, svm_p, class_order)
 
-        gbdt_cls, gbdt_p, gbdt_pr = gbdt_predict_proba(X[tr], y[tr], X[te], cfg)
+        gbdt_cls, gbdt_p, gbdt_pr = gbdt_predict_proba(X_feat[tr], y[tr], X_feat[te], cfg)
         gbdt[te] = align_proba(gbdt_cls, gbdt_p, class_order)
 
         fold_meta.append(
@@ -168,7 +170,7 @@ def main():
         )
 
     # 拼接概率
-    X = stack_meta_features(
+    X_meta = stack_meta_features(
         [
             (class_order, gmm),
             (class_order, svm),
@@ -179,7 +181,7 @@ def main():
 
     # 训练元学习器
     meta = StackingClassifier(cfg=cfg, random_state=int(cfg.get("seed", 42)))
-    meta.fit(X, y)
+    meta.fit(X_meta, y)
 
     runner = EvalRunner(cfg)
     fold_details = []
@@ -217,7 +219,7 @@ def main():
     for sp in bar:
         fit_predict._fold = sp.fold
         fit_predict._actors_tr = actors[sp.train_idx]
-        res = runner.evaluate_split(X, y, sp, fit_predict)
+        res = runner.evaluate_split(X_feat, y, sp, fit_predict)
         results.append(res)
         fold_details.append(
             {
@@ -238,7 +240,7 @@ def main():
         "dataset": "ravdess",
         "protocol": "ravdess_5fold",
         "base_models": ["gmm_map", f"kernel_svm_{svm_kernel}", "gbdt"],
-        "meta_feature_dim": int(X.shape[1]),
+        "meta_feature_dim": int(X_meta.shape[1]),
         "class_order": class_order,
         "summary": summary,
         "baseline_uar": baselines,
