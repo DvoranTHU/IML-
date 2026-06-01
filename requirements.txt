@@ -8,4 +8,3 @@ lightgbm>=4.0
 matplotlib>=3.7
 pyyaml>=6.0
 tqdm>=4.65
-hmmlearn>=0.3
