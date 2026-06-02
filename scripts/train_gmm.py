@@ -65,7 +65,7 @@ def select_n_components(X, y, actors, k_list, params, seed, val_actor_ratio=0.2)
     return best_k
 
 
-def main() -> None:
+def main():
     cfg = load_config()
     X, y, splits = ravdess_cv_arrays(cfg)
     bundle = load_feature_bundle("ravdess", cfg)
