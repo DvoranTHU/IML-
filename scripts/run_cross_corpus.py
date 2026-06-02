@@ -61,14 +61,14 @@ def select_n_components(X, y, actors, k_list, params, seed, val_actor_ratio=0.2)
             best_uar, best_k = float(uar), k
     return best_k
 
-
+# 根据路径获取演员ID
 def actors_for_paths(paths, bundle):
     path_to_actor = {p: int(a) for p, a in zip(bundle["paths"], bundle["actor_id"])}
     return np.array([path_to_actor[p] for p in paths], dtype=int)
 
 # 加载基线模型UAR
-def load_in_domain_uar(metrics_dir: Path) -> dict[str, float]:
-    out: dict[str, float] = {}
+def load_in_domain_uar(metrics_dir):
+    out = {}
 
     gmm_path = metrics_dir / "gmm_ravdess.json"
     if gmm_path.is_file():
