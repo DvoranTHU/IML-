@@ -90,7 +90,7 @@
 
 ## 环境配置
 
-Python 3.10+
+Python 3.10
 
 ```bash
 conda create --name mli_lab
@@ -123,7 +123,7 @@ python scripts/train_stacking.py
 python scripts/run_cross_corpus.py
 ```
 
-配置统一由`configs/default.yaml`读取，随机种子`seed: 42`。
+配置统一由`configs/default.yaml`读取，随机种子`seed: 42`，结果输出到`outputs/metrics/*.json`。
 
 
 
